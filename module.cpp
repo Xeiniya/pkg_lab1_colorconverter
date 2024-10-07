@@ -393,6 +393,6 @@ QColor Module::colorFromXYZ(double x, double y, double z){
         outOfRangeError();
     }
     QColor col;
-    col.setRgb(r,g,b);
+    col.setRgb(r, g, b);
     return col;
 }
