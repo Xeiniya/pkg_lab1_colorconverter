@@ -18,21 +18,31 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(m1, SIGNAL(sliderMoved()), this, SLOT(changeColor1()));
     QObject::connect(m2, SIGNAL(sliderMoved()), this, SLOT(changeColor2()));
     QObject::connect(m3, SIGNAL(sliderMoved()), this, SLOT(changeColor3()));
+
+    QPalette f = this->palette();
+    f.setColor(QPalette::Window, QColor(227, 241, 241));
+    this->setAutoFillBackground(true);
+    this->setPalette(f);
+
     QPalette p = QPalette();
-    p.setBrush(QPalette::Window, Qt::black);
+    p.setBrush(QPalette::Window, Qt::white);
     wColor->setAutoFillBackground(true);
     wColor->setPalette(p);
+
     ui->setupUi(this);
     QGridLayout* l = new QGridLayout;
+
     pbColor->setText("Choose color");
     m1->setType(type::RGB);
     m2->setType(type::CMYK);
     m3->setType(type::XYZ);
+
     l->addWidget(wColor, 1, 0, 1, 1);
     l->addWidget(pbColor, 2, 0, 1, 1);
     l->addWidget(m1, 0, 1, 1, 1);
     l->addWidget(m2, 1, 1, 1, 1);
     l->addWidget(m3, 2, 1, 1, 1);
+
     ui->centralwidget->setLayout(l);
 }
 
